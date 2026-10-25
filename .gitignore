@@ -1,0 +1,6 @@
+data/
+*.tmp
+.kino-storage.json
+.kino-cookies.json
+.kino-secrets.json
+*.pem

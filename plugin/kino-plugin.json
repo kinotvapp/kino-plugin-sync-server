@@ -1,0 +1,100 @@
+{
+  "id": "sync-server",
+  "name": "Sync Servidor",
+  "version": "1.0.0",
+  "apiVersion": 12,
+  "entry": "plugin.js",
+  "description": "Sincroniza tus aparatos de Kino a través de un servidor pequeño que corres tú mismo (server.mjs). Plugin de ejemplo.",
+  "author": "Kino",
+  "icon": "icon.png",
+  "hosts": [
+    "example.invalid"
+  ],
+  "fetchHosts": "any",
+  "capabilities": [
+    "syncProvider"
+  ],
+  "settings": [
+    {
+      "key": "needs",
+      "type": "help",
+      "title": "Qué necesitas",
+      "titleEn": "What you need",
+      "body": "Dos datos de tu servidor de sincronización:\n- su dirección https (la de tu túnel)\n- su token\n\nPara montar tu propio servidor, sigue la guía (botón Ver la guía).",
+      "bodyEn": "Two things from your sync server:\n- its https address (your tunnel's)\n- its token\n\nTo run your own server, follow the guide (Open the guide button).",
+      "devices": [
+        "phone"
+      ]
+    },
+    {
+      "key": "guide",
+      "type": "link",
+      "label": "Ver la guía",
+      "labelEn": "Open the guide",
+      "url": "https://github.com/kinotvapp/kino-plugin-sync-server",
+      "devices": [
+        "phone"
+      ]
+    },
+    {
+      "key": "server",
+      "label": "Tu servidor",
+      "labelEn": "Your server",
+      "type": "section",
+      "hint": "La dirección https de tu túnel y el token que imprimió server.mjs al arrancar.",
+      "hintEn": "Your tunnel's https address and the token server.mjs printed when it started.",
+      "devices": [
+        "phone"
+      ]
+    },
+    {
+      "key": "serverUrl",
+      "label": "Dirección del servidor",
+      "labelEn": "Server address",
+      "type": "text",
+      "hint": "https://algo.trycloudflare.com",
+      "hintEn": "https://something.trycloudflare.com",
+      "devices": [
+        "phone"
+      ]
+    },
+    {
+      "key": "token",
+      "label": "Token",
+      "labelEn": "Token",
+      "type": "password",
+      "hint": "El que imprimió server.mjs (data/token)",
+      "hintEn": "The one server.mjs printed (data/token)",
+      "devices": [
+        "phone"
+      ]
+    },
+    {
+      "key": "status",
+      "label": "Estado",
+      "labelEn": "Status",
+      "type": "status"
+    },
+    {
+      "key": "check",
+      "label": "Probar conexión",
+      "labelEn": "Test the connection",
+      "type": "action"
+    }
+  ],
+  "sync": {
+    "mode": "poll",
+    "pullEveryMs": 300000,
+    "pushDebounceMs": 60000,
+    "maxBlobBytes": 4194304,
+    "keySecret": "token",
+    "provision": [
+      "serverUrl",
+      "token"
+    ]
+  },
+  "signature": {
+    "authorKey": "82b87b938e0a95b142467c815a8823cb54310a13a828c3c4c77b1eda43294ae6",
+    "value": "ea6895fd862c52069a5423c112abd7b7c58aad74a08488b0ec784387420f95f25580f38b91cd0a7be7eae3b20dea79c1664707c9d90c3ed219949f18edac0e0b"
+  }
+}
